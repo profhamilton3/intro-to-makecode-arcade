@@ -1,6 +1,14 @@
+def on_b_pressed():
+    mySprite.start_effect(effects.fire, randint(100, 600))
+controller.B.on_event(ControllerButtonEvent.PRESSED, on_b_pressed)
+
 def on_a_pressed():
     mySprite.start_effect(effects.spray, randint(100, 600))
 controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
+
+def on_left_pressed():
+    mySprite.set_velocity(-21, -8)
+controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
 
 mySprite: Sprite = None
 scene.set_background_image(img("""
@@ -169,3 +177,9 @@ mySprite = sprites.create(img("""
             .........fffc..............cccc..
     """),
     SpriteKind.player)
+mySprite.set_position(160, 120)
+mySprite.set_bounce_on_wall(True)
+music.play(music.create_song(assets.song("""
+        BEAT_ONE
+    """)),
+    music.PlaybackMode.LOOPING_IN_BACKGROUND)
