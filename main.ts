@@ -1,5 +1,11 @@
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite.startEffect(effects.fire, randint(100, 600))
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.startEffect(effects.spray, randint(100, 600))
+})
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite.setVelocity(-21, -8)
 })
 let mySprite: Sprite = null
 scene.setBackgroundImage(img`
@@ -167,3 +173,5 @@ mySprite = sprites.create(img`
     ...ffff..f99cc.............c999c.
     .........fffc..............cccc..
     `, SpriteKind.Player)
+mySprite.setPosition(160, 120)
+mySprite.setBounceOnWall(true)
